@@ -7,5 +7,5 @@
     android:name="com.example.fetch_timothyliu_android.ui.fragment.ItemListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".ui.MainActivity"
     tools:layout="@layout/fragment_item_list" />
