@@ -28,11 +28,13 @@ class ItemRepository(
 
                 localDataSource.saveItems(validItems)
 
-                Log.d("ItemRepository", "Items refreshed successfully.")
+//                Log.d("ItemRepository", "Items refreshed successfully.")
             } catch (e: IOException) {
-                Log.e("ItemRepository", "Network error refreshing items: ${e.message}", e)
+//                Log.e("ItemRepository", "Network error refreshing items: ${e.message}", e)
+                throw e
             } catch (e: Exception) {
-                Log.e("ItemRepository", "Error refreshing items: ${e.message}", e)
+//                Log.e("ItemRepository", "Error refreshing items: ${e.message}", e)
+                throw e
             }
         }
     }
