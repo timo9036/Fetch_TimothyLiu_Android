@@ -9,45 +9,73 @@
             type="com.example.fetch_timothyliu_android.data.model.Item" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        app:cardBackgroundColor="@color/item_card_background"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:contentPadding="16dp">
 
-        <TextView
-            android:id="@+id/listId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"List ID: " + String.valueOf(item.listId)}'
-            android:textAppearance="?attr/textAppearanceListItemSecondary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="List ID: 1" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text='@{"Name: " + item.name}'
-            android:textAppearance="?attr/textAppearanceListItem"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/listId"
-            app:layout_constraintTop_toTopOf="@+id/listId"
-            app:layout_constraintBottom_toBottomOf="@+id/listId"
-            tools:text="Name: Item 684" />
+            <View
+                android:id="@+id/indicator_view"
+                android:layout_width="6dp"
+                android:layout_height="0dp"
+                android:background="@color/item_main_orange"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/id"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text='@{"ID: " + String.valueOf(item.id)}'
-            android:textSize="12sp"
-            android:textColor="@android:color/darker_gray"
-            app:layout_constraintStart_toStartOf="@+id/name"
-            app:layout_constraintTop_toBottomOf="@+id/name"
-            tools:text="ID: 123" />
+            <TextView
+                android:id="@+id/listId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text='@{"List ID: " + String.valueOf(item.listId)}'
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textColor="@color/item_text_secondary"
+                app:layout_constraintStart_toEndOf="@id/indicator_view"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="List ID: 1" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:text='@{item.name != null ? item.name : "Name N/A"}'
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="@color/item_text_primary"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/listId"
+                app:layout_constraintTop_toBottomOf="@+id/listId"
+                tools:text="Name: Very Long Item Name That Might Wrap Around" />
+
+            <TextView
+                android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text='@{"ID: " + String.valueOf(item.id)}'
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textColor="@color/item_accent_purple"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/name"
+                app:layout_constraintTop_toBottomOf="@+id/name"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:text="ID: 123" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 </layout>
