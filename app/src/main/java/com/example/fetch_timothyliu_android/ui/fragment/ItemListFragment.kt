@@ -13,12 +13,27 @@ import com.example.fetch_timothyliu_android.ui.adapter.ItemAdapter
 import com.example.fetch_timothyliu_android.ui.viewmodel.ItemViewModel
 import com.google.android.material.snackbar.Snackbar
 import androidx.lifecycle.Observer
+import com.example.fetch_timothyliu_android.ui.viewmodel.ItemViewModelFactory
+import com.example.fetch_timothyliu_android.data.local.AppDatabase
+import com.example.fetch_timothyliu_android.data.local.LocalDataSource
+import com.example.fetch_timothyliu_android.data.remote.RemoteDataSource
+import com.example.fetch_timothyliu_android.data.remote.RetrofitInstance
+import com.example.fetch_timothyliu_android.data.repository.ItemRepository
 
 class ItemListFragment : Fragment() {
 
     private var _binding: FragmentItemListBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: ItemViewModel by viewModels()
+
+    private val viewModel: ItemViewModel by viewModels {
+        val application = requireActivity().application
+        val itemDao = AppDatabase.getDatabase(application).itemDao()
+        val localDataSource = LocalDataSource(itemDao)
+        val remoteDataSource = RemoteDataSource(RetrofitInstance.api)
+        val repository = ItemRepository(remoteDataSource, localDataSource)
+        ItemViewModelFactory(repository)
+    }
+
     private lateinit var itemAdapter: ItemAdapter
 
     override fun onCreateView(

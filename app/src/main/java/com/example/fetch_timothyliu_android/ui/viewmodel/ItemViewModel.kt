@@ -11,12 +11,7 @@ import com.example.fetch_timothyliu_android.data.repository.ItemRepository
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-class ItemViewModel(application: Application) : AndroidViewModel(application) {
-
-    private val itemDao = AppDatabase.getDatabase(application).itemDao()
-    private val localDataSource = LocalDataSource(itemDao)
-    private val remoteDataSource = RemoteDataSource(RetrofitInstance.api)
-    private val repository = ItemRepository(remoteDataSource, localDataSource)
+class ItemViewModel(private val repository: ItemRepository) : ViewModel() {
 
     val items: LiveData<List<Item>> = repository.items
 
@@ -29,17 +24,19 @@ class ItemViewModel(application: Application) : AndroidViewModel(application) {
 
     fun refreshData() {
         viewModelScope.launch {
-            _errorMessage.value = null
+             _errorMessage.value = null
             try {
                 repository.refreshItems()
+                _errorMessage.postValue(null)
             } catch (networkError: IOException) {
-                _errorMessage.value = "Network error: Could not fetch data. Displaying cached data if available."
-                if (items.value.isNullOrEmpty()) {
-                    _errorMessage.value = "Network error and no cached data available."
+                val currentItems = items.value
+                if (currentItems.isNullOrEmpty()) {
+                    _errorMessage.postValue("Network error and no cached data available.")
+                } else {
+                    _errorMessage.postValue("Network error: Could not fetch data. Displaying cached data.")
                 }
             } catch (e: Exception) {
-                _errorMessage.value = "An unexpected error occurred: ${e.localizedMessage}"
-            } finally {
+                _errorMessage.postValue("An unexpected error occurred: ${e.localizedMessage}")
             }
         }
     }
