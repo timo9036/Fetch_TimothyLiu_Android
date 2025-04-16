@@ -59,7 +59,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/listId"
                 app:layout_constraintTop_toBottomOf="@+id/listId"
-                tools:text="Name: Very Long Item Name That Might Wrap Around" />
+                tools:text="Name: Item 0" />
 
             <TextView
                 android:id="@+id/id"
