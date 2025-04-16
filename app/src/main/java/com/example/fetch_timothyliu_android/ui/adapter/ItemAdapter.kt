@@ -32,8 +32,7 @@ class ItemAdapter : ListAdapter<Item, ItemAdapter.ItemViewHolder>(ItemDiffCallba
             binding.executePendingBindings()
         }
     }
-
-    // DiffUtil for efficient list updates
+    
     class ItemDiffCallback : DiffUtil.ItemCallback<Item>() {
         override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
             return oldItem.id == newItem.id
