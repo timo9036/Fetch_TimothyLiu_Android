@@ -18,12 +18,16 @@ class ItemViewModel(private val repository: ItemRepository) : ViewModel() {
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage: LiveData<String?> get() = _errorMessage
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> get() = _isLoading
+
     init {
         refreshData()
     }
 
     fun refreshData() {
         viewModelScope.launch {
+            _isLoading.postValue(true)
              _errorMessage.value = null
             try {
                 repository.refreshItems()
@@ -37,6 +41,8 @@ class ItemViewModel(private val repository: ItemRepository) : ViewModel() {
                 }
             } catch (e: Exception) {
                 _errorMessage.postValue("An unexpected error occurred: ${e.localizedMessage}")
+            } finally {
+                _isLoading.postValue(false)
             }
         }
     }

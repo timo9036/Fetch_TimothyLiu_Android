@@ -118,4 +118,6 @@ dependencies {
     //splash screen
     implementation("androidx.core:core-splashscreen:1.0.1")
 
+    //swiperefresh
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
 }

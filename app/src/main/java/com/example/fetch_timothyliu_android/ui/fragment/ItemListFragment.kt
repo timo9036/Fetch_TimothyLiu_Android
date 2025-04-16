@@ -50,6 +50,7 @@ class ItemListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupRecyclerView()
+        setupSwipeToRefresh()
         observeViewModel()
     }
 
@@ -59,6 +60,12 @@ class ItemListFragment : Fragment() {
             adapter = itemAdapter
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
+        }
+    }
+
+    private fun setupSwipeToRefresh() {
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            viewModel.refreshData()
         }
     }
 
@@ -75,6 +82,9 @@ class ItemListFragment : Fragment() {
                 viewModel.onErrorMessageShown()
             }
         })
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
+            binding.swipeRefreshLayout.isRefreshing = isLoading
+    })
     }
 
     override fun onDestroyView() {
