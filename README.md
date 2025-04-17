@@ -10,6 +10,12 @@ This app fetches data from a specific JSON endpoint, filters and sorts it accord
 
 [![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/timothysliu/)
 
+## Version Highlights
+
+* **v0.0.1:** Implemented the core requirements: fetching data from the JSON endpoint, filtering out items with null/blank names, sorting items by `listId` then `name`, and displaying them in a basic list.
+* **v0.0.2:** Enhanced the application with several key additions: implemented unit tests for data components, added a custom app logo and splash screen, integrated swipe-to-refresh functionality for manual data updates, and improved the overall layout aesthetics.
+
+
 ## Table of Contents
 
 1.  [Screenshots](#-screenshots)
@@ -53,9 +59,11 @@ This app fetches data from a specific JSON endpoint, filters and sorts it accord
 * **Sort Items:** Sort items first by `listId`, then by `name`.
 * **Visual Grouping:** Achieves grouping by `listId` through sorting in the list display.
 * **Caching:** Stores processed data locally using Room DB.
-* **Swipe-to-Refresh:** Allows manual data updates with a pull-down gesture.
-* **Splash Screen:** Displays splash screen during startup.
-* **Unit Tested:** Includes JUnit/Mockito tests for core data components.
+* **Swipe-to-Refresh:** Allows manual data updates with a pull-down gesture. *(Added in v0.0.2)*
+* **Splash Screen:** Displays splash screen during startup. *(Added in v0.0.2)*
+* **App Logo:** Custom application icon. *(Added in v0.0.2)*
+* **Unit Tested:** Includes JUnit/Mockito tests for core data components. *(Added in v0.0.2)*
+* **Improved UI:** Enhanced layout presentation. *(Added in v0.0.2)*
 
 ---
 
@@ -104,5 +112,9 @@ com.example.fetch_timothyliu_android/     # Root Package
 │   ├── fragment/    
 │   ├── viewmodel/           
 ```
+---
+## 📧 Contact
 
-Thanks for your time, you can contact me @ [![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/timothysliu/) , [![Email](https://img.shields.io/badge/-Email-orange?style=flat-square&logo=gmail)](mailto:timo9036@hotmail.com)
+Thanks for your time reviewing this assignment! You can reach me via:
+
+[![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/timothysliu/) [![Email](https://img.shields.io/badge/-Email-orange?style=flat-square&logo=gmail)](mailto:timo9036@hotmail.com)
