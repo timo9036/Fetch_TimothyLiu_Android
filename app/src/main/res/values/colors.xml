@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-</resources>
+    <color name="colorPrimary">#FF5722</color>
+    <color name="colorPrimaryDark">#E64A19</color>
+    <color name="colorAccent">#9C27B0</color>
+    <color name="item_main_orange">#FF9800</color>
+    <color name="item_accent_purple">#673AB7</color>
+    <color name="item_text_primary">#212121</color>
+    <color name="item_text_secondary">#757575</color>
+    <color name="item_card_background">#FFFFFF</color>
+    <color name="item_text_on_main">#FFFFFF</color>
+    </resources>
